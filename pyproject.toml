@@ -1,6 +1,6 @@
 [project]
 name = "python_library_example"
-version = "v0.2"
+version = "v0.5"
 authors = [
   { name="joanplaja", email="joanplaja10@gmail.com" },
 ]

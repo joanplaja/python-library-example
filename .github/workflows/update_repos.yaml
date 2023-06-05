@@ -23,7 +23,7 @@ jobs:
         uses: joanplaja/pylibupdater@v0
         with:
           library: 'python-library-example'
-          new_version: ${{ github.event.ref }}
+          new_version: ${{ github.event.ref.replace('refs/tags/', '') }}
           repository: ${{ matrix.repositories.name }}
           branch: ${{ matrix.repositories.branch }}
           python_version: ${{ matrix.repositories.python_version }}
