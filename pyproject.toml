@@ -1,0 +1,14 @@
+[project]
+name = "python-library-example"
+version = "v0.1"
+authors = [
+  { name="joanplaja", email="joanplaja10@gmail.com" },
+]
+readme = "README.md"
+description = ""
+requires-python = ">=3.6"
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "src"
+]
