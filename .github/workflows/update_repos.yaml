@@ -1,0 +1,32 @@
+name: On push version
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+'
+
+jobs:
+  format:
+    name: Update test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repositories:
+          - name: 'joanplaja/django-poetry-example'
+            python_version: '3.8'
+            branch: 'master'
+
+    steps:
+
+      - name: 🏗 Update python library and create PR
+        id: pylibupdater
+        uses: joanplaja/pylibupdater@v0
+        with:
+          library: 'python-library-example'
+          new_version: ${{ github.event.ref }}
+          repository: ${{ matrix.repositories.name }}
+          branch: ${{ matrix.repositories.branch }}
+          python_version: ${{ matrix.repositories.python_version }}
+          pat: ${{ secrets.PAT }}
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh_library_url: git+ssh://git@github.com/joanplaja/python-library-example@${{ github.event.ref }}
