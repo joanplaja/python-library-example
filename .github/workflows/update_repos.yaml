@@ -17,13 +17,27 @@ jobs:
             branch: 'master'
 
     steps:
+      
+
+      - name: Get tag
+        id: get-tag
+        run: |
+          REF="${{ github.event.ref }}"
+          echo "Original ref: $REF"
+
+          # Remove prefix
+          TAG="${REF/refs\/tags\//}"
+          echo "Modified ref: $TAG"
+
+          # Set modified ref as an output
+          echo "::set-output name=tag::$TAG"
 
       - name: 🏗 Update python library and create PR
         id: pylibupdater
         uses: joanplaja/pylibupdater@v0
         with:
           library: 'python-library-example'
-          new_version: ${{ github.event.ref.split('refs/tags/')[1] }}
+          new_version: ${{ steps.set-tag.outputs.tag }}
           repository: ${{ matrix.repositories.name }}
           branch: ${{ matrix.repositories.branch }}
           python_version: ${{ matrix.repositories.python_version }}
