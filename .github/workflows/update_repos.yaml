@@ -20,7 +20,7 @@ jobs:
       
 
       - name: Get tag
-        id: get-tag
+        id: set-tag
         run: |
           REF="${{ github.event.ref }}"
           echo "Original ref: $REF"
