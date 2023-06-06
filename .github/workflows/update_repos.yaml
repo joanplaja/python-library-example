@@ -36,11 +36,11 @@ jobs:
         id: pylibupdater
         uses: joanplaja/pylibupdater@v0
         with:
-          library: 'python-library-example'
+          library: 'python_library_example'
           new_version: ${{ steps.set-tag.outputs.tag }}
           repository: ${{ matrix.repositories.name }}
           branch: ${{ matrix.repositories.branch }}
           python_version: ${{ matrix.repositories.python_version }}
           pat: ${{ secrets.PAT }}
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          ssh_library_url: git+ssh://git@github.com/joanplaja/python-library-example@${{ steps.set-tag.outputs.tag }}
+          ssh_library_url: git+ssh://git@github.com/joanplaja/python_library_example@${{ steps.set-tag.outputs.tag }}
