@@ -16,6 +16,6 @@ Push the new commit:
 git push origin main
 Push the new tags:
 
-# We need to force push v1 because it may exists if it's not the first major push.
+# We need to force push v1 because it may exists if it's not the first major push
 git push origin v1.10
 git push -f origin v1
